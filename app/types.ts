@@ -1,4 +1,12 @@
-export type Mood = 'positive' | 'neutral' | 'negative'
+export type Mood =
+  | 'happy'
+  | 'excited'
+  | 'calm'
+  | 'neutral'
+  | 'tired'
+  | 'anxious'
+  | 'sad'
+  | 'angry'
 
 export interface DiaryEntry {
   id: string
@@ -7,5 +15,6 @@ export interface DiaryEntry {
   emotions: string[]
   mood: Mood
   comfort: string
+  insight: string
   createdAt: number
 }
