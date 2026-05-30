@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
+import { validateAnalysisResult } from '../../diary'
 
 export const dynamic = 'force-dynamic'
 
@@ -49,7 +50,11 @@ mood는 아래 8가지 중 가장 잘 맞는 하나를 선택:
       response_format: { type: 'json_object' },
     })
 
-    const result = JSON.parse(response.choices[0].message.content || '{}')
+    const result = validateAnalysisResult(JSON.parse(response.choices[0].message.content || '{}'))
+    if (!result) {
+      return NextResponse.json({ error: '분석 결과를 읽지 못했어요. 다시 시도해주세요.' }, { status: 502 })
+    }
+
     return NextResponse.json(result)
   } catch {
     return NextResponse.json({ error: '분석 중 오류가 발생했어요' }, { status: 500 })

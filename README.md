@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 오늘의 감정 일기
 
-## Getting Started
+AI가 일기 내용을 읽고 감정 태그, 대표 무드, 위로 메시지, 감정 인사이트를 제공하는 개인 감정 저널입니다. 기록은 브라우저 `localStorage`에 저장되어 가볍게 사용할 수 있습니다.
 
-First, run the development server:
+## 주요 기능
+
+- 오늘의 일기 작성 및 AI 감정 분석
+- 감정 태그, 무드 미터, 위로 메시지, 인사이트 제공
+- 최근 7일 감정 흐름과 연속 기록 표시
+- 지난 기록의 감정 분포, 자주 느낀 감정, 검색 및 무드 필터
+- 저장된 기록 JSON 내보내기
+
+## 기술 스택
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- OpenAI SDK
+
+## 실행
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.env.local`에 OpenAI API 키를 설정합니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+OPENAI_API_KEY=your_api_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 검증
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```
