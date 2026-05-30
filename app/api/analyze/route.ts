@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   try {
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
     const { content } = await req.json()
 
     if (!content?.trim()) {
